@@ -28,14 +28,12 @@ async def invert_image(image: bytes = File(...)):
 
 @app.get("/prime/{num}")
 async def primes(num: int):
-    flag = True
     if num > 1:
         for i in range(2, int(math.sqrt(num) + 1)):
             if (num % i) == 0:
-                flag = False
-                break
+                return {"Is prime": "False"}
 
-    return {"Is prime": flag}
+    return {"Is prime": "True"}
 
 
 @app.get("/date")
